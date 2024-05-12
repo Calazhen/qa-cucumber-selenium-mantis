@@ -50,6 +50,3 @@ jobs:
         with:
           name: report-tests
           path: '**/formated-report/'
-
-      - name: Imprimir diretório atual com asteriscos
-        run: bash -c 'echo -e "**********************************************************\n$(pwd)\n**********************************************************"'

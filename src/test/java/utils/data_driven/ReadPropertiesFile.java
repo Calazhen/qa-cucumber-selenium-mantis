@@ -18,7 +18,7 @@ public class ReadPropertiesFile {
     }
 
     private String readingPropertiesFile(String variable) throws IOException {
-        FileInputStream fileObj = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\values.properties");
+        FileInputStream fileObj = new FileInputStream(System.getProperty("user.dir") + "/src/test/resources/values.properties");
         Properties proObj = new Properties();
         proObj.load(fileObj);
         return proObj.getProperty(variable);
