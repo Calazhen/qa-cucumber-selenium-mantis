@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         firefox: [ 'latest' ]
-    name: Firefox ${{ matrix.firefox }} sample
+    name: Firefox ${{ matrix.firefox }}
 
     steps:
       - name: Setup firefox
