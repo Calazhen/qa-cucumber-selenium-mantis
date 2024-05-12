@@ -29,6 +29,7 @@ public class RunBase {
 
         switch (browser) {
             case CHROME:
+                WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();
 //               chromeOptions.addArguments("--headless");
                 chromeOptions.addArguments("--remote-allow-origins");
