@@ -9,7 +9,7 @@ jobs:
 
     services:
       firefox:
-        image: selenium/standalone-firefox:latest
+        image: jlesage/firefox:latest
         options: --shm-size=2g
         ports:
           - 4444:4444
