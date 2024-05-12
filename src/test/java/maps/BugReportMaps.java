@@ -2,45 +2,43 @@ package maps;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 
-public class BugReportMaps  {
-    @FindBy(id="category_id")
-    protected WebElement cboCategoria;
+public class BugReportMaps {
+    @FindBy(id = "reproducibility")
+    protected Select cboFrequencia;
 
-    @FindBy(id="reproducibility")
-    protected WebElement cboFrequencia;
+    @FindBy(id = "severity")
+    protected Select cboGravidade;
 
-    @FindBy(id="severity")
-    protected WebElement cboGravidade;
-
-    @FindBy(id="priority")
-    protected WebElement cboPrioridade;
+    @FindBy(id = "priority")
+    protected Select cboPrioridade;
 
     @FindBy(css = "i[title='+']")
     protected WebElement btnPlusPreenchaPerfil;
 
-    @FindBy(id="summary")
+    @FindBy(id = "summary")
     protected WebElement inpResumo;
 
-    @FindBy(id="description")
+    @FindBy(id = "description")
     protected WebElement inpDescricao;
 
-    @FindBy(id="steps_to_reproduce")
+    @FindBy(id = "steps_to_reproduce")
     protected WebElement inpPassosParaReproduzir;
 
-    @FindBy(id="additional_info")
+    @FindBy(id = "additional_info")
     protected WebElement inpInformacoesAdicionais;
 
-    @FindBy(id= "tag_select")
-    protected  WebElement cboMarcadoresAtuais;
+    @FindBy(id = "tag_select")
+    protected WebElement cboMarcadoresAtuais;
 
     @FindBy(xpath = "(//div[@class='dropzone center dz-clickable'])[1]")
-    protected  WebElement dragAndDropAdicionarArquivos;
+    protected WebElement dragAndDropAdicionarArquivos;
 
-    @FindBy (xpath = "//span[normalize-space()='público']")
+    @FindBy(xpath = "//span[normalize-space()='público']")
     protected WebElement rdbVisibilidadePublico;
 
-    @FindBy (xpath = "//span[normalize-space()='privado']")
+    @FindBy(xpath = "//span[normalize-space()='privado']")
     protected WebElement rdbVisibilidadePrivado;
 
     @FindBy(xpath = "//span[normalize-space()='selecione para criar mais tarefas']")
@@ -48,9 +46,6 @@ public class BugReportMaps  {
 
     @FindBy(css = "input[value='Criar Nova Tarefa']")
     protected WebElement btCriarNovaTarefa;
-
-
-
 
 
 }

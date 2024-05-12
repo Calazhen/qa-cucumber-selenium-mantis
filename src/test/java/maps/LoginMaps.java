@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 
-public class LoginMaps  {
+public class LoginMaps {
 
     @FindBy(id = "username")
     protected WebElement inpNomeDeUsuario;

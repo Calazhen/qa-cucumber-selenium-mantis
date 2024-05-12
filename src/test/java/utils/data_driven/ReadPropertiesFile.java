@@ -10,7 +10,7 @@ public class ReadPropertiesFile {
 
 
     public String getReadPropertiesFile(String variable) throws IOException {
-        if (readPropertiesFile==null){
+        if (readPropertiesFile == null) {
             readPropertiesFile = new ReadPropertiesFile();
             readPropertiesFile.readingPropertiesFile(variable);
         }

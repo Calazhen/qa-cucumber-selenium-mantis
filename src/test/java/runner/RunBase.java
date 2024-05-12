@@ -29,8 +29,8 @@ public class RunBase {
             case CHROME:
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("--version=114");
-//               chromeOptions.addArguments("--headless");
+                chromeOptions.addArguments("--whitelisted-ips=");
+//              chromeOptions.addArguments("--headless");
                 driver = new ChromeDriver(chromeOptions);
                 driver.manage().window().maximize();
                 break;

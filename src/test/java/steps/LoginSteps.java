@@ -14,20 +14,18 @@ import utils.data_driven.ReadPropertiesFile;
 import utils.screenShot.Screenshot;
 
 import java.io.IOException;
-import java.io.RandomAccessFile;
 
 
-public class LoginSteps  {
+public class LoginSteps {
     private LoginPage loginPage;
     private MyViewPage myViewPage;
     ReadPropertiesFile readPropertiesFile;
 
 
-
     @Dado("que esteja na pagina da login")
-    public void que_esteja_na_pagina_da_login(){
+    public void que_esteja_na_pagina_da_login() {
         loginPage = new LoginPage();
-        myViewPage= new MyViewPage();
+        myViewPage = new MyViewPage();
     }
 
     @Quando("o login for realizado com usuario padrao")
@@ -57,10 +55,10 @@ public class LoginSteps  {
 
     @Before
     public void inicializaTeste() throws IOException {
-       String browser = System.getProperty("browser").toUpperCase();
-        readPropertiesFile =  new ReadPropertiesFile();
+//      String browser = System.getProperty("browser").toUpperCase();
+        readPropertiesFile = new ReadPropertiesFile();
         String baseUrl = readPropertiesFile.getReadPropertiesFile("baseUrl");
-        RunBase.getDriver(RunBase.Browser.valueOf(browser)).get(baseUrl);
+        RunBase.getDriver(RunBase.Browser.valueOf("FIREFOX")).get(baseUrl);
     }
 
 

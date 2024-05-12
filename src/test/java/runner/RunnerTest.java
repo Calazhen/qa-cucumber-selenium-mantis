@@ -8,7 +8,6 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"json:target/reports/cucumberReport.json", "html:target/CucumberTrivagoReport"},
         features = "classpath:features",
-        tags = "@LoginComSucesso",
         glue = "steps"
 )
 public class RunnerTest extends RunBase {
