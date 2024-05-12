@@ -25,6 +25,9 @@ jobs:
           distribution: 'adopt'
           cache: 'maven'
 
+      - name: Entrar na pasta raiz
+        run: cd .\desafio-mantis-base2\
+
       - name: Run Test
         run: mvn test -Dtest=RunCucumber -Dbrowser=firefox
 
