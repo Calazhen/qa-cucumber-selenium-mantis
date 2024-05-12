@@ -1,12 +1,12 @@
 package runner;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+
 
 public class RunBase {
 
@@ -30,7 +30,7 @@ public class RunBase {
         switch (browser) {
             case CHROME:
                 ChromeOptions chromeOptions = new ChromeOptions();
-//                chromeOptions.addArguments("--headless");
+//               chromeOptions.addArguments("--headless");
                 chromeOptions.addArguments("--remote-allow-origins");
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver(chromeOptions);
