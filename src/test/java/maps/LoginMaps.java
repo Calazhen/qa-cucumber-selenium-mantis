@@ -15,10 +15,5 @@ public class LoginMaps {
     @FindBy(css = "label[for='remember-login'] span[class='lbl padding-6']")
     protected WebElement cbxMantenhaMeConectado;
 
-    @FindBy(css = "label[for='secure-session'] span[class='lbl padding-6']")
-    protected WebElement cbxPermitirSessaoAPartirDeUnicoIp;
-
-    @FindBy(css = "a[class='pull-right']")
-    protected WebElement linkPerdeuSenha;
 
 }

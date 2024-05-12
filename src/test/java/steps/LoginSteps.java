@@ -38,7 +38,6 @@ public class LoginSteps {
         Assert.assertEquals(readPropertiesFile.getReadPropertiesFile("User") + " ( Henrique Calazans )", myViewPage.getBoasVindas());
     }
 
-
     @After
     public void encerraTeste(Scenario scenario) {
         if ((scenario.isFailed())) {
@@ -55,10 +54,11 @@ public class LoginSteps {
 
     @Before
     public void inicializaTeste() throws IOException {
-//      String browser = System.getProperty("browser").toUpperCase();
+        // Comente a String abaixo e substitua o valor por "FIREFOX na última linha do método para rodar manualmente
+        String browser = System.getProperty("browser").toUpperCase();
         readPropertiesFile = new ReadPropertiesFile();
         String baseUrl = readPropertiesFile.getReadPropertiesFile("baseUrl");
-        RunBase.getDriver(RunBase.Browser.valueOf("FIREFOX")).get(baseUrl);
+        RunBase.getDriver(RunBase.Browser.valueOf(browser)).get(baseUrl);
     }
 
 

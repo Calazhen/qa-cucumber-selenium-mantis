@@ -27,17 +27,16 @@ public class RunBase {
 
         switch (browser) {
             case CHROME:
-                WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("--whitelisted-ips=");
-//              chromeOptions.addArguments("--headless");
+//                chromeOptions.addArguments("--headless");
+                chromeOptions.addArguments("--remote-allow-origins");
+                WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver(chromeOptions);
                 driver.manage().window().maximize();
                 break;
 
             case FIREFOX:
                 WebDriverManager.firefoxdriver().setup();
-//               firefoxOptions.set(true);
                 driver = new FirefoxDriver();
                 driver.manage().window().maximize();
                 break;
