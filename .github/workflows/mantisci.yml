@@ -1,0 +1,31 @@
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  RunTest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar o projeto
+        uses: actions/checkout@v3
+
+      - name: Instalar Java 8
+        uses: actions/setup-java@v3
+        with:
+          java-version: '8'
+          distribution: 'adopt'
+          cache: 'maven'
+
+      - name: Instalar Firefox
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y firefox
+          mvn -B clean verify
+
+      - name: Run Test
+        run: mvn test -Dtest=RunCucumber -Dbrowser=firefox
+
+      - name: Gerar relatório
+        run: mvn cluecumber-report:reporting

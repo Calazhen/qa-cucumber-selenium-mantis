@@ -8,8 +8,9 @@ Funcionalidade: Criar Tarefa
 
   @CriarTarefa
   Cenario: Criar Tarefa com todos os campos preenchidos
-    Dado que estou na tela de criar tarefa
-    E tenho os dados preenchidos
+
+    Dado que esta na tela de criar tarefa
+    E tem os dados preenchidos
     Quando clicar em criar nova tarefa
     Entao deve visualizar a mensagem de sucesso
 

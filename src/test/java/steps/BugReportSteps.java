@@ -27,7 +27,7 @@ public class BugReportSteps {
 
     protected String mensagemDeSucesso = "Operação realizada com sucesso.";
 
-    @Dado("que estou na tela de criar tarefa")
+    @Dado("que esta na tela de criar tarefa")
     public void que_estou_na_tela_de_criar_tarefa() throws IOException {
         myViewPage = new MyViewPage();
         bugReportPage = new BugReportPage();
@@ -37,7 +37,7 @@ public class BugReportSteps {
         myViewPage.criarNovaterefa();
     }
 
-    @Dado("tenho os dados preenchidos")
+    @Dado("tem os dados preenchidos")
     public void tenho_os_dados_preenchidos() throws IOException {
         bugReportPage.cadastrarTarefaCamposObrigatorios(resumo, descricao);
     }
