@@ -38,6 +38,7 @@ jobs:
         run: mvn clean test -Dtest=**/*RunnerTest -Dbrowser=firefox
 
       - name: Gerar relatório
+        if: always()
         run: mvn cluecumber-report:reporting
 
       - name: Arquivar relatório
