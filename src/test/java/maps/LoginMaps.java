@@ -10,7 +10,7 @@ public class LoginMaps {
     protected WebElement inpNomeDeUsuario;
     @FindBy(id = "password")
     protected WebElement inpSenha;
-    @FindBy(css = "input[value='Entrar']")
+    @FindBy(css = "#login-form > fieldset > input.width-40.pull-right.btn.btn-success.btn-inverse.bigger-110")
     protected WebElement btnEntrar;
     @FindBy(css = "label[for='remember-login'] span[class='lbl padding-6']")
     protected WebElement cbxMantenhaMeConectado;
