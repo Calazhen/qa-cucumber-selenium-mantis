@@ -7,6 +7,13 @@ jobs:
   RunTest:
     runs-on: ubuntu-latest
 
+    services:
+      firefox:
+        image: selenium/standalone-firefox:latest
+        options: --shm-size=2g
+        ports:
+          - 4444:4444
+
     steps:
       - name: Clonar o projeto
         uses: actions/checkout@v3
@@ -17,12 +24,6 @@ jobs:
           java-version: '8'
           distribution: 'adopt'
           cache: 'maven'
-
-      - name: Instalar Firefox
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y firefox
-          mvn -B clean verify
 
       - name: Run Test
         run: mvn test -Dtest=RunCucumber -Dbrowser=firefox

@@ -38,7 +38,7 @@ public class BugReportSteps {
     }
 
     @Dado("tem os dados preenchidos")
-    public void tenho_os_dados_preenchidos() throws IOException {
+    public void tenho_os_dados_preenchidos()  {
         bugReportPage.cadastrarTarefaCamposObrigatorios(resumo, descricao);
     }
 
@@ -48,7 +48,7 @@ public class BugReportSteps {
     }
 
     @Entao("deve visualizar a mensagem de sucesso")
-    public void deve_visualizar_a_mensage_de_sucesso() throws IOException {
+    public void deve_visualizar_a_mensage_de_sucesso()  {
         // Assert.assertEquals(mensagemDeErroLimiteCriacaoTarefas, bugReportPage.pegarMensagemDeLimiteTarefasCriadas());
         // Assert para sucesso da criação da Task
         Assert.assertEquals(mensagemDeSucesso, bugReportPage.pegarMensagemDeSucesso());
