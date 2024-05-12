@@ -38,17 +38,13 @@ public class RunBase {
                 break;
 
             case FIREFOX:
+                System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/src/resources/drivers/geckodriver.exe");
                 WebDriverManager.firefoxdriver().setup();
-
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
                 firefoxOptions.addArguments("--headless");
-
                 driver = new FirefoxDriver(firefoxOptions);
-                if (driver==null){
-                    System.setProperty(System.getProperty("user.dir"),"src/test/resources/drivers/geckodriver.exe");
-                    driver = new FirefoxDriver(firefoxOptions);
-                }
                 driver.manage().window().maximize();
+
                 break;
 
             default:
