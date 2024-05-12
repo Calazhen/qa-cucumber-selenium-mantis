@@ -1,6 +1,7 @@
 package runner;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -37,9 +38,18 @@ public class RunBase {
                 break;
 
             case FIREFOX:
+                Proxy proxy = new Proxy();
+                proxy.setProxyType(Proxy.ProxyType.MANUAL);
+                proxy.setHttpProxy("localhost:8080");
+
                 WebDriverManager.firefoxdriver().setup();
+
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
+                firefoxOptions.setProxy(proxy);
+                // Equivalente a remote allow-origins no chrome
+                firefoxOptions.addPreference("network.proxy.allow_hijacking_localhost", true);
                 firefoxOptions.addArguments("--headless");
+
                 driver = new FirefoxDriver(firefoxOptions);
                 driver.manage().window().maximize();
                 break;

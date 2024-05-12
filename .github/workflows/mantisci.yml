@@ -49,4 +49,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: report-tests
-          path: '**/formated-report/'
+          path: '${{ github.workspace }}/target/formatedreport'
+
