@@ -4,17 +4,20 @@ on:
       - master
 
 jobs:
-  RunTest:
+  build:
     runs-on: ubuntu-latest
-
-    services:
-      firefox:
-        image: jlesage/firefox:latest
-        options: --shm-size=2g
-        ports:
-          - 4444:4444
+    strategy:
+      matrix:
+        firefox: [ '84.0', 'devedition-84.0b1', 'latest-beta', 'latest-devedition', 'latest-nightly', 'latest-esr', 'latest' ]
+    name: Firefox ${{ matrix.firefox }} sample
 
     steps:
+      - name: Setup firefox
+        id: setup-firefox
+        uses: browser-actions/setup-firefox@v1
+        with:
+          firefox-version: ${{ matrix.firefox }}
+
       - name: Clonar o projeto
         uses: actions/checkout@v3
 
