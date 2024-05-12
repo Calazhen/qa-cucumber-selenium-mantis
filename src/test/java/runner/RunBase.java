@@ -41,7 +41,7 @@ public class RunBase {
                 System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/src/resources/drivers/geckodriver.exe");
                 WebDriverManager.firefoxdriver().setup();
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
-                firefoxOptions.addArguments("--headless");
+//                firefoxOptions.addArguments("--headless");
                 driver = new FirefoxDriver(firefoxOptions);
                 driver.manage().window().maximize();
 
