@@ -59,6 +59,16 @@ public class LoginSteps {
         readPropertiesFile = new ReadPropertiesFile();
         String baseUrl = readPropertiesFile.getReadPropertiesFile("baseUrl");
         RunBase.getDriver(RunBase.Browser.valueOf(browser)).get(baseUrl);
+
+
+        System.out.println("**********************************************************");
+        System.out.println("**********************************************************");
+        System.out.println(System.getProperty("user.dir") + "\\src\\test\\resources\\values.properties");
+        System.out.println("**********************************************************");
+        System.out.println("**********************************************************");
+        System.out.println(System.getProperty("user.dir"));
+        System.out.println("**********************************************************");
+        System.out.println("**********************************************************");
     }
 
 
