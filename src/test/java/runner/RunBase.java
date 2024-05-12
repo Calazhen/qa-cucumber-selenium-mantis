@@ -38,19 +38,16 @@ public class RunBase {
                 break;
 
             case FIREFOX:
-                Proxy proxy = new Proxy();
-                proxy.setProxyType(Proxy.ProxyType.MANUAL);
-                proxy.setHttpProxy("localhost:8080");
-
                 WebDriverManager.firefoxdriver().setup();
 
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
-                firefoxOptions.setProxy(proxy);
-                // Equivalente a remote allow-origins no chrome
-                firefoxOptions.addPreference("network.proxy.allow_hijacking_localhost", true);
                 firefoxOptions.addArguments("--headless");
 
                 driver = new FirefoxDriver(firefoxOptions);
+                if (driver==null){
+                    System.setProperty(System.getProperty("user.dir"),"src/test/resources/drivers/geckodriver.exe");
+                    driver = new FirefoxDriver(firefoxOptions);
+                }
                 driver.manage().window().maximize();
                 break;
 
