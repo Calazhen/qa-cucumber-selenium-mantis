@@ -35,7 +35,7 @@ jobs:
           echo "export MAVEN_OPTS='-Xmx2g'" >> $GITHUB_ENV
 
       - name: Run Test
-        run: mvn test -Dtest=RunCucumber -Dbrowser=firefox
+        run: mvn clean test -Dtest=**/*RunnerTest -Dbrowser=firefox
 
       - name: Gerar relatório
         run: mvn cluecumber-report:reporting
