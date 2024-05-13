@@ -42,7 +42,7 @@ cd desafio-mantis-base2
 3. Execute os testes  escolhendo o browser:
 
 ```powershell
-mvn test -Dtest=**/*RunCucumberTest -Dbrowser=chrome
+mvn test -Dtest=**/*RunCucumberTest -Dbrowser=firefox
 ```
 4. Gere o relatório do cucumber:
 
