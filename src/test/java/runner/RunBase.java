@@ -16,7 +16,7 @@ public class RunBase {
 
     public static WebDriver getDriver() {
         if (driver == null) {
-            return getDriver(Browser.FIREFOX);
+            return getDriver(Browser.CHROME);
         } else {
             return driver;
         }
