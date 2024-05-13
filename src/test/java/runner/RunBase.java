@@ -33,7 +33,6 @@ public class RunBase {
                 ChromeOptions chromeOptions = new ChromeOptions();
 //               chromeOptions.addArguments("--headless");
                 chromeOptions.addArguments("--remote-allow-origins");
-                chromeOptions.setCapability("chromeVersion", "113.0.5672.63");
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver(chromeOptions);
                 driver.manage().window().maximize();
