@@ -21,6 +21,7 @@ jobs:
         uses: nanasess/setup-chromedriver@v1
         with:
           chrome-version: ${{ matrix.chrome }}
+      - name: Iniciar o servidor X virtual
         run: |
           export DISPLAY=:99
           chromedriver --url-base=/wd/hub &
@@ -46,4 +47,15 @@ jobs:
           echo "export MAVEN_OPTS='-Xmx2g'" >> $GITHUB_ENV
 
       - name: Executar Teste
-        run: mvn clean test -Dtest
+        run: mvn clean test -Dtest=**/*RunnerTest -Dbrowser=chrome
+
+      - name: Gerar relatório
+        if: always()
+        run: mvn cluecumber-report:reporting
+
+      - name: Arquivar relatório
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: report-tests
+          path: '${{ github.workspace }}/target/formatedreport'
