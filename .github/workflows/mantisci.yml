@@ -12,8 +12,8 @@ jobs:
     name: Google Chrome ${{ matrix.chrome }}
 
     steps:
-      - name: Setup Chrome
-        uses: browser-actions/setup-chrome@latest
+      - name: Instalar Chrome
+        uses: browser-actions/setup-chrome@v1
         with:
           chrome-version: ${{ matrix.chrome }}
 
@@ -21,6 +21,7 @@ jobs:
         uses: nanasess/setup-chromedriver@v1
         with:
           chrome-version: ${{ matrix.chrome }}
+
       - name: Iniciar o servidor X virtual
         run: |
           export DISPLAY=:99
