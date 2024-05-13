@@ -29,10 +29,11 @@ public class RunBase {
 
         switch (browser) {
             case CHROME:
-                System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/resources/drivers/chromedriver");
+                WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();
 //               chromeOptions.addArguments("--headless");
-                chromeOptions.setCapability("chromeVersion", "113.0.5672.63/.64");
+                chromeOptions.addArguments("--remote-allow-origins");
+                chromeOptions.setCapability("chromeVersion", "113.0.5672.63");
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver(chromeOptions);
                 driver.manage().window().maximize();
