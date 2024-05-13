@@ -8,15 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        firefox: [ 'latest' ]
-    name: Firefox ${{ matrix.firefox }}
+        chrome: ['113.0.5672.63']
+    name: Google Chrome ${{ matrix.chrome }}
 
     steps:
-      - name: Setup firefox
-        id: setup-firefox
-        uses: browser-actions/setup-firefox@v1
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@latest
         with:
-          firefox-version: ${{ matrix.firefox }}
+          chrome-version: ${{ matrix.chrome }}
 
       - name: Clonar o projeto
         uses: actions/checkout@v3

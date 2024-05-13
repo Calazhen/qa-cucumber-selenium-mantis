@@ -16,7 +16,7 @@ public class RunBase {
 
     public static WebDriver getDriver() {
         if (driver == null) {
-            return getDriver(Browser.CHROME);
+            return getDriver(Browser.FIREFOX);
         } else {
             return driver;
         }
@@ -33,6 +33,7 @@ public class RunBase {
                 ChromeOptions chromeOptions = new ChromeOptions();
 //               chromeOptions.addArguments("--headless");
                 chromeOptions.addArguments("--remote-allow-origins");
+                chromeOptions.setCapability("chromeVersion", "113.0.5672.63/.64");
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver(chromeOptions);
                 driver.manage().window().maximize();
