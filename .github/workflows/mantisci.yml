@@ -29,10 +29,12 @@ jobs:
 
       - name: Download Maven
         run: |
-          Invoke-WebRequest -Uri "https://apache.claz.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.zip" -OutFile "maven.zip"
-          Expand-Archive -Path "maven.zip" -DestinationPath "C:\"
-          Rename-Item -Path "C:\apache-maven-3.8.4" -NewName "maven"
-          Remove-Item -Path "maven.zip"
+          $mavenUrl = "https://apache.claz.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.zip"
+          $destination = "$env:USERPROFILE\maven.zip"
+          Invoke-WebRequest -Uri $mavenUrl -OutFile $destination
+          Expand-Archive -Path $destination -DestinationPath "$env:USERPROFILE\"
+          Rename-Item -Path "$env:USERPROFILE\apache-maven-3.8.4" -NewName "maven"
+          Remove-Item -Path $destination
 
       - name: Configurar variáveis de ambiente para Maven
         run: |
