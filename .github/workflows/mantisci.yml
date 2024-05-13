@@ -36,7 +36,7 @@ jobs:
           echo "export MAVEN_HOME=/usr/share/maven" >> $GITHUB_ENV
           echo "export MAVEN_OPTS='-Xmx2g'" >> $GITHUB_ENV
       - name: Run Test
-        run: mvn clean test -Dtest=**/*RunnerTest -Dbrowser=firefox
+        run: mvn clean test -Dtest=**/*RunnerTest -Dbrowser=chrome
 
       - name: Gerar relatório
         if: always()
