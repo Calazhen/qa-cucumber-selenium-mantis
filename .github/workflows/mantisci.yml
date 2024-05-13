@@ -17,6 +17,15 @@ jobs:
         with:
           chrome-version: ${{ matrix.chrome }}
 
+      - name: Instalar o Chrome Driver
+        uses: nanasess/setup-chromedriver@v1
+        with:
+          chrome-version: ${{ matrix.chrome }}
+        run: |
+          export DISPLAY=:99
+          chromedriver --url-base=/wd/hub &
+          sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # opcional
+
       - name: Clonar o projeto
         uses: actions/checkout@v3
 
@@ -35,16 +44,6 @@ jobs:
           echo "export PATH=/usr/share/maven/bin:$PATH" >> $GITHUB_ENV
           echo "export MAVEN_HOME=/usr/share/maven" >> $GITHUB_ENV
           echo "export MAVEN_OPTS='-Xmx2g'" >> $GITHUB_ENV
-      - name: Run Test
-        run: mvn clean test -Dtest=**/*RunnerTest -Dbrowser=chrome
 
-      - name: Gerar relatório
-        if: always()
-        run: mvn cluecumber-report:reporting
-
-      - name: Arquivar relatório
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: report-tests
-          path: '${{ github.workspace }}/target/formatedreport'
+      - name: Executar Teste
+        run: mvn clean test -Dtest
