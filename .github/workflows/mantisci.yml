@@ -27,11 +27,14 @@ jobs:
 
       - name: Instalar Maven
         run: |
-          Invoke-WebRequest "https://downloads.apache.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.zip" -OutFile "maven.zip"
-          Expand-Archive -Path "maven.zip" -DestinationPath "C:\"
-          Remove-Item -Path "maven.zip"
-          [System.Environment]::SetEnvironmentVariable("MAVEN_HOME", "C:\apache-maven-3.8.4", "User")
+          $mavenUrl = "https://downloads.apache.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.zip"
+          $mavenZip = Join-Path $env:TEMP "maven.zip"
+          Invoke-WebRequest -Uri $mavenUrl -OutFile $mavenZip
+          Expand-Archive -Path $mavenZip -DestinationPath $env:ProgramFiles
+          $mavenDir = Join-Path $env:ProgramFiles "apache-maven-3.8.4"
+          [System.Environment]::SetEnvironmentVariable("MAVEN_HOME", $mavenDir, "User")
           [System.Environment]::SetEnvironmentVariable("Path", "$env:MAVEN_HOME\bin;$env:Path", "User")
+          Remove-Item -Path $mavenZip
           refreshenv
 
       - name: Executar Teste
