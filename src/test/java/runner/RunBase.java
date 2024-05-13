@@ -32,7 +32,6 @@ public class RunBase {
                 System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/resources/drivers/chromedriver");
                 ChromeOptions chromeOptions = new ChromeOptions();
 //               chromeOptions.addArguments("--headless");
-                chromeOptions.addArguments("--remote-allow-origins");
                 chromeOptions.setCapability("chromeVersion", "113.0.5672.63/.64");
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver(chromeOptions);
