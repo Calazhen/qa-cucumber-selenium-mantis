@@ -12,10 +12,8 @@ jobs:
     name: Google Chrome ${{ matrix.chrome }}
 
     steps:
-      - name: Instalar Chrome
-        uses: browser-actions/setup-chrome@v1
-        with:
-          chrome-version: ${{ matrix.chrome }}
+      - name: Checkout do código
+        uses: actions/checkout@v2
 
       - name: Instalar o Chrome Driver
         uses: nanasess/setup-chromedriver@v1
