@@ -15,17 +15,6 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v2
 
-      - name: Instalar o Chrome Driver
-        uses: nanasess/setup-chromedriver@v1
-        with:
-          chrome-version: ${{ matrix.chrome }}
-
-      - name: Iniciar o servidor X virtual
-        run: |
-          export DISPLAY=:99
-          chromedriver --url-base=/wd/hub &
-          sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # opcional
-
       - name: Clonar o projeto
         uses: actions/checkout@v3
 
