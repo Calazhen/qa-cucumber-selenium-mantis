@@ -5,20 +5,19 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     strategy:
       matrix:
         firefox: [ 'latest' ]
     name: Firefox ${{ matrix.firefox }}
 
     steps:
-      - name: Setup firefox
-        id: setup-firefox
+      - name: Setup Firefox
         uses: browser-actions/setup-firefox@v1
         with:
           firefox-version: ${{ matrix.firefox }}
 
-      - name: Clonar o projeto
+      - name: Clone o projeto
         uses: actions/checkout@v3
 
       - name: Instalar Java 8
@@ -28,23 +27,27 @@ jobs:
           distribution: 'adopt'
           cache: 'maven'
 
-      - name: Instalar Maven
-        run: sudo apt-get install -y maven
+      - name: Download Maven
+        run: |
+          Invoke-WebRequest -Uri "https://apache.claz.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.zip" -OutFile "maven.zip"
+          Expand-Archive -Path "maven.zip" -DestinationPath "C:\"
+          Rename-Item -Path "C:\apache-maven-3.8.4" -NewName "maven"
+          Remove-Item -Path "maven.zip"
 
       - name: Configurar variáveis de ambiente para Maven
         run: |
-          echo "export PATH=/usr/share/maven/bin:$PATH" >> $GITHUB_ENV
-          echo "export MAVEN_HOME=/usr/share/maven" >> $GITHUB_ENV
+          echo "export PATH=C:\maven\bin;$PATH" >> $GITHUB_ENV
+          echo "export MAVEN_HOME=C:\maven" >> $GITHUB_ENV
           echo "export MAVEN_OPTS='-Xmx2g'" >> $GITHUB_ENV
 
-      - name: Run Test
+      - name: Executar Testes
         run: mvn clean test -Dtest=**/*RunnerTest -Dbrowser=firefox
 
-      - name: Gerar relatório
+      - name: Gerar Relatório
         if: always()
         run: mvn cluecumber-report:reporting
 
-      - name: Arquivar relatório
+      - name: Arquivar Relatório
         if: always()
         uses: actions/upload-artifact@v3
         with:
