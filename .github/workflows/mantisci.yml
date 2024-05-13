@@ -6,13 +6,20 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        firefox: [ 'latest' ]
+    name: Firefox ${{ matrix.firefox }}
 
     steps:
+      - name: Setup firefox
+        id: setup-firefox
+        uses: browser-actions/setup-firefox@v1
+        with:
+          firefox-version: ${{ matrix.firefox }}
+
       - name: Clonar o projeto
         uses: actions/checkout@v3
-
-      - name: Instalar Chrome
-        uses: browser-actions/setup-chrome@latest
 
       - name: Instalar Java 8
         uses: actions/setup-java@v3
@@ -29,9 +36,8 @@ jobs:
           echo "export PATH=/usr/share/maven/bin:$PATH" >> $GITHUB_ENV
           echo "export MAVEN_HOME=/usr/share/maven" >> $GITHUB_ENV
           echo "export MAVEN_OPTS='-Xmx2g'" >> $GITHUB_ENV
-
-      - name: Executar Teste
-        run: mvn clean test -Dtest=**/*RunnerTest -Dbrowser=chrome
+      - name: Run Test
+        run: mvn clean test -Dtest=**/*RunnerTest -Dbrowser=firefox
 
       - name: Gerar relatório
         if: always()
